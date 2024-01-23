@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{{ url_for('static', filename='logo.ico') }}" type="image/x-icon">
+    <title>GetAlloy</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    
+    <nav id="navigation-panel" class="nav">
+        <a href="{{ url_for('home_page') }}" id="logo" class="col">GetAlloy</a>
+        <a href="{{ url_for('api_page') }}" class="nav-link" id="api">API</a>
+        <a href="{{ url_for('about_page') }}" class="nav-link">About</a>
+    </nav>
+    
+    <div id="txt" class="container">
+        <div class="row">
+            <div class="col"></div>
+            <div class="col-6">
+                <h1>Начинай созидать прямо сейчас.<br /> Материал для любых целей.</h1>
+            </div>
+            <div class="col"></div>
+        </div>
+        <div class="row">  
+            <div class="col"></div>
+            <div class="col-6">
+                <h3>Сплав с твоими механическими и физическими характеристиками</h3>
+            </div>
+            <div class="col"></div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-4 form-div">
+                <form action="{{ url_for('home_page') }}" method="post" class="form-example">
+                    <div class="form-example">
+                        <label for="HB">Твердость, Бринелль: </label>
+                        <input type="text" name="HB" id="HB" required />
+                    </div>
+                    <div class="form-example">
+                        <label for="ultimate_strength">Предел прочности, ГПа: </label>
+                        <input type="text" name="ultimate_strength" id="ultimate-strength" required />
+                    </div>
+                    <div class="form-example">
+                        <label for="E">Модуль Юнга, ГПа: </label>
+                        <input type="text" name="E" id="E" required />
+                    </div>
+                    <div class="form-example">
+                        <label for="ro">Плотность, г/см<sup>3</sup>: </label>
+                        <input type="text" name="ro" id="ro" required />
+                    </div>
+                    <div class="form-example">
+                        <label for="c">Теплоемкость, Дж/г*K: </label>
+                        <input type="text" name="c" id="c" required />
+                    </div>
+                    <div id="form-example-submit">
+                        <input type="submit" value="Получить" />
+                    </div>
+                </form>
+            </div>
+
+            {{ resp |safe }}
+        </div>
+    </div>
+    <!--
+    <script>
+        $('form').submit(function(e) {
+            var empty = $(this).parent().find("input").filter(function() {
+            return this.value === "";
+            });
+            if (!empty.length) {
+                //Если все графы заполнены, то показываем popup
+                $('#response').show();
+                //очищаем все данные текстовых полей, кроме кнопок
+                $('form input').not(':button, :submit').val('');
+            }
+            e.preventDefault();
+        });
+    </script>
+    -->
+</body>
+</html>

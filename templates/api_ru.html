@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{{ url_for('static', filename='logo.ico') }}" type="image/x-icon">
+    <title>GetAlloy</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    
+    <nav id="navigation-panel" class="nav">
+        <a href="{{ url_for('home_page') }}" id="logo" class="col">GetAlloy</a>
+        <a href="{{ url_for('api_page') }}" class="nav-link" id="api">API</a>
+        <a href="{{ url_for('about_page') }}" class="nav-link">About</a>
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="col" id="api-block">
+                <p>Сделайте POST-запрос на <a href="getalloy.com/predict">getalloy.ru/predict</a>, отправляя в запросе json вида:</p>
+                <img src="../../static/request.png" alt="request" class="api-guide">
+                <p>Где "HB" - это твердость в шкале Бринелля; Ultimate_strength - предел прочности, ГПа; "E" - Модуль Юнга, ГПа; "ro" - плотность, г/см<sup>3</sup>; "c" - теплоемкость, Дж/г*К. Вы можете добавить в массив json более одного экземпляра. Вы получите ответ в виде:</p>
+                <img src="../../static/response.png" alt="response" class="api-guide">
+                <p>Элемент и соответственно его процентное содержание в сплавве</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
